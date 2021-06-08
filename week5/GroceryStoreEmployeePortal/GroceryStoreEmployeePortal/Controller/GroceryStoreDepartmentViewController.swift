@@ -153,13 +153,32 @@ class GroceryStoreDepartmentViewController: UIViewController {
     
     // MARK: - Actions
     @objc func bakeryButtonPressed() {
-        navigationController?.pushViewController(JobViewController(), animated: true)
+        navigationController?.pushViewController(JobViewController(department: .bakery, delegate: self), animated: true)
     }
     
     @objc func produceButtonPressed() {
-        navigationController?.pushViewController(JobViewController(), animated: true)
+        navigationController?.pushViewController(JobViewController(department: .produce, delegate: self), animated: true)
         
     }
 
 }
 
+
+// MARK: - Grocery Store Workable Methods
+extension GroceryStoreDepartmentViewController: GroceryStoreWorkable {
+    func bakeCake() {
+        print("started to bake a cake")
+        
+        let alertController = UIAlertController(title: "Bakery Department Task", message: "You have started baking a cake. You can go home once you've finished", preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        present(alertController, animated: true, completion: nil)
+    }
+    
+    func inspectFruitForFreshness() {
+        print("started to inspect fruit for freshness")
+        
+        let alertController = UIAlertController(title: "Produce Department Task", message: "You have started inspecting the fruit for freshness. You can go home once you've finished", preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        present(alertController, animated: true, completion: nil)
+    }
+}

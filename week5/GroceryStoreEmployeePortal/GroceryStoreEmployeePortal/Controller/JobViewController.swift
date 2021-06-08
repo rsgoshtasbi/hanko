@@ -9,35 +9,35 @@ import UIKit
 
 class JobViewController: UIViewController {
     
-    let titleLabel: UILabel = {
+    lazy var titleLabel: UILabel = {
        let titleLabel = UILabel()
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.text = Department.bakery.title
+        titleLabel.text = department.title
         titleLabel.font = UIFont.systemFont(ofSize: 30, weight: .bold)
         return titleLabel
     }()
     
-    let taskLabel: UILabel = {
+    lazy var taskLabel: UILabel = {
        let taskLabel = UILabel()
         taskLabel.translatesAutoresizingMaskIntoConstraints = false
-        taskLabel.text = Department.bakery.task
+        taskLabel.text = "Daily Task: \(department.taskDescription)"
         taskLabel.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         return taskLabel
     }()
     
-    let jobImageView: UIImageView = {
+    lazy var jobImageView: UIImageView = {
        let jobImageView = UIImageView()
         jobImageView.translatesAutoresizingMaskIntoConstraints = false
         jobImageView.contentMode = .scaleAspectFit
         
-        let jobImage = UIImage(named: "cake")?.withRenderingMode(.alwaysTemplate)
+        let jobImage = department.taskImage?.withRenderingMode(.alwaysTemplate)
         jobImageView.image = jobImage
         jobImageView.tintColor = .black
         
         return jobImageView
     }()
     
-    let startTaskButton: UIButton = {
+    var startTaskButton: UIButton = {
         let startTaskButton = UIButton()
         startTaskButton.translatesAutoresizingMaskIntoConstraints = false
         startTaskButton.setTitle("Start Task", for: .normal)
@@ -47,7 +47,22 @@ class JobViewController: UIViewController {
         
         return startTaskButton
     }()
-
+    
+    let department: Department
+    
+    weak var delegate: GroceryStoreWorkable?
+    
+    init(department: Department, delegate: GroceryStoreWorkable) {
+        self.department = department
+        self.delegate = delegate
+        
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -101,5 +116,14 @@ class JobViewController: UIViewController {
     
     @objc func startTaskButtonPressed() {
         print("task button pressed")
+        
+        switch department {
+        case .bakery:
+            navigationController?.popViewController(animated: true)
+            delegate?.bakeCake()
+        case .produce:
+            navigationController?.popViewController(animated: true)
+            delegate?.inspectFruitForFreshness()
+        }
     }
 }

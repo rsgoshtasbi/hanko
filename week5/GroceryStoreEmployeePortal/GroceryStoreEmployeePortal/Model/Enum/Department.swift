@@ -29,13 +29,22 @@ enum Department {
             return UIImage(named: "apple")
         }
     }
-    
-    var task: String {
+        
+    var taskDescription: String {
         switch self {
         case .bakery:
-            return "Daily Task: Bake a cake"
+            return "Bake a cake"
         case .produce:
-            return "Daily Task: Bake a cake"
+            return "Inspect fruit for freshness"
+        }
+    }
+    
+    var taskImage: UIImage? {
+        switch self {
+        case .bakery:
+            return UIImage(named: "cake")
+        case .produce:
+            return UIImage(named: "grapes")
         }
     }
 }
