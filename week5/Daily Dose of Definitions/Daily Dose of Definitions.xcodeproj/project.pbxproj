@@ -7,15 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E80B4AA92674795F00CF3948 /* WordDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80B4AA82674795F00CF3948 /* WordDetails.swift */; };
+		E80B4AAB26747AC100CF3948 /* WordDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80B4AAA26747AC100CF3948 /* WordDetailsViewController.swift */; };
 		E8980B2E266F2472004BB6E5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8980B2D266F2472004BB6E5 /* AppDelegate.swift */; };
 		E8980B30266F2472004BB6E5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8980B2F266F2472004BB6E5 /* SceneDelegate.swift */; };
 		E8980B32266F2472004BB6E5 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8980B31266F2472004BB6E5 /* HomeViewController.swift */; };
 		E8980B37266F2473004BB6E5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E8980B36266F2473004BB6E5 /* Assets.xcassets */; };
 		E8980B3A266F2473004BB6E5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E8980B38266F2473004BB6E5 /* LaunchScreen.storyboard */; };
 		E8980B47266F2B53004BB6E5 /* RandomWordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8980B46266F2B53004BB6E5 /* RandomWordView.swift */; };
+		E8B2A6072670872A002D9A6A /* DefinitionSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B2A6062670872A002D9A6A /* DefinitionSearchViewController.swift */; };
+		E8B4AB292673243600BB0C80 /* DefinitionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B4AB282673243600BB0C80 /* DefinitionTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E80B4AA82674795F00CF3948 /* WordDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordDetails.swift; sourceTree = "<group>"; };
+		E80B4AAA26747AC100CF3948 /* WordDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordDetailsViewController.swift; sourceTree = "<group>"; };
 		E8980B2A266F2472004BB6E5 /* Daily Dose of Definitions.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Daily Dose of Definitions.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8980B2D266F2472004BB6E5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E8980B2F266F2472004BB6E5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -24,6 +30,8 @@
 		E8980B39266F2473004BB6E5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E8980B3B266F2473004BB6E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E8980B46266F2B53004BB6E5 /* RandomWordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomWordView.swift; sourceTree = "<group>"; };
+		E8B2A6062670872A002D9A6A /* DefinitionSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefinitionSearchViewController.swift; sourceTree = "<group>"; };
+		E8B4AB282673243600BB0C80 /* DefinitionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefinitionTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +75,7 @@
 		E8980B41266F2872004BB6E5 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				E80B4AA82674795F00CF3948 /* WordDetails.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -74,6 +83,7 @@
 		E8980B43266F287C004BB6E5 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				E8B4AB272673241800BB0C80 /* Cell */,
 				E8980B46266F2B53004BB6E5 /* RandomWordView.swift */,
 			);
 			path = View;
@@ -83,6 +93,8 @@
 			isa = PBXGroup;
 			children = (
 				E8980B31266F2472004BB6E5 /* HomeViewController.swift */,
+				E8B2A6062670872A002D9A6A /* DefinitionSearchViewController.swift */,
+				E80B4AAA26747AC100CF3948 /* WordDetailsViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -97,6 +109,14 @@
 				E8980B3B266F2473004BB6E5 /* Info.plist */,
 			);
 			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E8B4AB272673241800BB0C80 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				E8B4AB282673243600BB0C80 /* DefinitionTableViewCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -168,7 +188,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E80B4AA92674795F00CF3948 /* WordDetails.swift in Sources */,
+				E8B4AB292673243600BB0C80 /* DefinitionTableViewCell.swift in Sources */,
 				E8980B32266F2472004BB6E5 /* HomeViewController.swift in Sources */,
+				E80B4AAB26747AC100CF3948 /* WordDetailsViewController.swift in Sources */,
+				E8B2A6072670872A002D9A6A /* DefinitionSearchViewController.swift in Sources */,
 				E8980B2E266F2472004BB6E5 /* AppDelegate.swift in Sources */,
 				E8980B30266F2472004BB6E5 /* SceneDelegate.swift in Sources */,
 				E8980B47266F2B53004BB6E5 /* RandomWordView.swift in Sources */,

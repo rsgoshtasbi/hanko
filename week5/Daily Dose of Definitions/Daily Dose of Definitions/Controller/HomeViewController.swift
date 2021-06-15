@@ -36,6 +36,12 @@ class HomeViewController: UIViewController {
         randomWordView.refreshButton.addTarget(self, action: #selector(rafreshButtonPressed), for: .touchUpInside)
         return randomWordView
     }()
+    
+    let definitionsSearchContainerView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,6 +53,7 @@ class HomeViewController: UIViewController {
     private func setUpUI() {
         setUpHeader()
         setUpRandomWordView()
+        setUpDefinitionsSearchContainerView()
     }
     
     private func setUpHeader() {
@@ -80,6 +87,30 @@ class HomeViewController: UIViewController {
         ])
     }
     
+    private func setUpDefinitionsSearchContainerView() {
+        let definitionSearchViewController = DefinitionSearchViewController()
+        definitionSearchViewController.view.translatesAutoresizingMaskIntoConstraints = false
+        addChild(definitionSearchViewController)
+        definitionsSearchContainerView.addSubview(definitionSearchViewController.view)
+        definitionSearchViewController.didMove(toParent: self)
+        
+        NSLayoutConstraint.activate([
+            definitionSearchViewController.view.topAnchor.constraint(equalTo: definitionsSearchContainerView.topAnchor),
+            definitionSearchViewController.view.leadingAnchor.constraint(equalTo: definitionsSearchContainerView.leadingAnchor),
+            definitionSearchViewController.view.bottomAnchor.constraint(equalTo: definitionsSearchContainerView.bottomAnchor),
+            definitionSearchViewController.view.trailingAnchor.constraint(equalTo: definitionsSearchContainerView.trailingAnchor),
+        ])
+        
+        view.addSubview(definitionsSearchContainerView)
+        
+        NSLayoutConstraint.activate([
+            definitionsSearchContainerView.topAnchor.constraint(equalTo: randomWordView.bottomAnchor, constant: 20),
+            definitionsSearchContainerView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
+            definitionsSearchContainerView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
+            definitionsSearchContainerView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20)
+        ])
+    }
+    
     @objc func rafreshButtonPressed() {
         print("Refresh button pressed")
         fetchRandomWordResponse { wordDetails, error in
@@ -95,7 +126,7 @@ class HomeViewController: UIViewController {
     }
     
     private func fetchRandomWordResponse(completion: @escaping (WordDetails?, Error?) -> Void) {
-        guard let randomWordDataURL = URL(string: "https://wordsapiv1.p.rapidapi.com/words/?random=true") else {
+        guard let randomWordDataURL = URL(string: "https://wordsapiv1.p.rapidapi.com/words/?random=true&hasDetails=definitions") else {
             print("expected random words api url broke")
             return
         }
@@ -125,14 +156,4 @@ class HomeViewController: UIViewController {
             }
         }.resume()
     }
-}
-
-
-struct WordDetails: Decodable {
-    let word: String?
-    let results: [WordResult]?
-}
-
-struct WordResult: Decodable {
-    let definition: String
 }
